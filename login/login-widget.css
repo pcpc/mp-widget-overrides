@@ -1,6 +1,5 @@
 * { font-family: var(--font-europa); }
 
-
 :host {
     /* Configuration */
     --button-padding: 0.5rem 1rem;
@@ -105,6 +104,8 @@ a.mppw-login--container {
   color: var(--button-hover-color);
   text-decoration: none;
 }
+
+.mppw-login .mppw-icon-unlock { border-radius: 0; }
 
 .mppw-icon-unlock {
   background: url(https://pcpc.github.io/mp-widget-overrides/login/login.svg) no-repeat top center;
