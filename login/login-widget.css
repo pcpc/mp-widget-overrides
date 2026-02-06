@@ -106,6 +106,10 @@ a.mppw-login--container {
   text-decoration: none;
 }
 
+.mppw-icon-unlock {
+  background: url(/login/login.svg) no-repeat top center;
+}
+
 .mppw-icon-person, .mppw-user-photo {
   aspect-ratio: 1;
 }
