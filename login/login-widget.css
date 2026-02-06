@@ -107,7 +107,7 @@ a.mppw-login--container {
 }
 
 .mppw-icon-unlock {
-  background: url(/login/login.svg) no-repeat top center;
+  background: url(./login.svg) no-repeat top center;
 }
 
 .mppw-icon-person, .mppw-user-photo {
