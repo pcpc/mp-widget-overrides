@@ -1,0 +1,122 @@
+* { font-family: var(--font-europa); }
+
+
+:host {
+    /* Configuration */
+--button-padding: 0.5rem 1rem;
+--button-gap: 0.1em;
+--button-bg: #A8895A;
+--button-color: #FFFFFF;
+--button-hover-bg: #B69C74;
+--button-hover-color: #FFFFFF;
+--button-border-width: 3px;
+--button-border-style: solid;
+--button-border-color: #A8895A;
+--button-radius: 0.25em;
+}
+
+div {
+  display: inline-flex;
+  font-size: 1rem;
+}
+a {
+  color: #3A6887;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+a.mppw-loggedout--username, a.mppw-login--container {
+
+/* Layout and spacing */
+display: inline-flex;
+align-items: center;
+gap: var(--button-gap);
+padding: var(--button-padding);
+
+/* Colours */
+background: var(--button-bg);
+color: var(--button-color);
+
+/* Stroke and radius */
+border-width: var(--button-border-width);
+border-style: var(--button-border-style);
+border-color: var(--button-border-color);
+border-radius: var(--button-radius);
+
+/* Typography */
+text-decoration: none;
+font-weight: var(--button-font-weight, 700);
+font-size: var(--button-font-size, 1.1em);
+letter-spacing: 0.05ch;
+font-family: sans-serif;
+line-height: 1.1;
+
+/* Interactive */
+cursor: pointer;
+}
+
+a.mppw-loggedout--username:hover, a.mppw-login--container:hover {
+  background: var(--button-hover-bg);
+  color: var(--button-hover-color);
+}
+
+#userImage {
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgba(255,255,255,0.8);
+  border-radius: 50%;
+}
+
+.mppw-component-container.mppw-login {
+  display: inline-flex;
+}
+
+a.mppw-login--container {
+  display: inline-flex;
+  
+}
+
+.mppw-login--container:hover, .mppw-login--container:focus {
+  color: var(--button-hover-color);
+}
+
+#securedMenuItems {
+  display: block;
+}
+  
+
+.mppw-login--dropdown {
+  background: var(--button-bg);
+  width: 100%;
+  padding: 0;
+}
+
+.mppw-login--list-item {
+  color: var(--button-color);
+  text-align: center;
+  line-height: 1.4;
+}
+
+.mppw-login--list-item a {
+  color: var(--button-color);
+}
+
+.mppw-login--list-item a:hover {
+  color: var(--button-hover-color);
+  text-decoration: none;
+}
+
+.mppw-icon-person, .mppw-user-photo {
+  aspect-ratio: 1;
+}
+
+#securedMenuItems a:hover {
+  background-color: var(--button-hover-bg);
+}
+
+@media (max-width: 415px) {
+  .mppw-login--dropdown {
+    width: 100%;
+    position: absolute;
+  }
+}
