@@ -107,7 +107,7 @@ a.mppw-login--container {
 }
 
 .mppw-icon-unlock {
-  background: url(./login.svg) no-repeat top center;
+  background: url(https://pcpc.github.io/mp-widget-overrides/login/login.svg) no-repeat top center;
 }
 
 .mppw-icon-person, .mppw-user-photo {
