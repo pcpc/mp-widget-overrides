@@ -3,16 +3,16 @@
 
 :host {
     /* Configuration */
---button-padding: 0.5rem 1rem;
---button-gap: 0.1em;
---button-bg: #A8895A;
---button-color: #FFFFFF;
---button-hover-bg: #B69C74;
---button-hover-color: #FFFFFF;
---button-border-width: 3px;
---button-border-style: solid;
---button-border-color: #A8895A;
---button-radius: 0.25em;
+    --button-padding: 0.5rem 1rem;
+    --button-gap: 0.1em;
+    --button-bg: var(--color-primary-600);
+    --button-color: #FFFFFF;
+    --button-hover-bg: var(--color-primary-700);
+    --button-hover-color: #FFFFFF;
+    --button-border-width: 3px;
+    --button-border-style: solid;
+    --button-border-color: var(--color-primary-600);
+    --button-radius: 0.25em;
 }
 
 div {
