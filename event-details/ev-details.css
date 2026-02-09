@@ -1,0 +1,117 @@
+:host {
+   --root-text-color: var(--color-neutral);
+   --form-field-border: var(--color-neutral-200);
+   --form-field-border--active: var(--color-neutral);
+   --form-btn-primary-bgcolor: var(--color-primary);
+   --form-btn-primary-hover: var(--color-primary-700);
+}
+
+* { font-family: var(--font-europa); }
+h1, h2, h3, p { font-family: var(--font-freight); }
+
+.mpp-innerpage p { line-height: 1.5; }
+
+#detailsContainer, #mapContainer, #singlePriceContainer {
+    display:none !important;
+}
+
+.mppw-form-field__control { width: revert; border-radius: var(--radius-md); border-color: var(--color-neutral-200); }
+
+.mppw-form-field__alt-label { font-size: revert; }
+
+.mppw-form-field--is-valid .mppw-form-field__label,
+.mppw-form-field--is-invalid .mppw-form-field__label,
+.mppw-form-field__static-container .mppw-form-field__label,
+.mppw-form-field__control:not([value=""]) + .mppw-form-field__label,
+.mppw-form-field__control:focus + .mppw-form-field__label {
+    padding: revert;
+}
+
+.mppw-form-field {
+  display: flex;
+  flex-direction: column-reverse; /* This moves the label above the input */
+}
+
+.mpp-innerpage--map-container { visibility: hidden; height: 0; }
+.mppw-form-field__control:focus {
+                background: revert;
+                border-color: revert; 
+                box-shadow: revert;
+                padding: revert;
+            }
+
+.mppw-form-field__control:not([value=""]) + .mppw-form-field__label, .mppw-form-field__control:focus + .mppw-form-field__label {
+	color: var(--color-neutral);
+	
+}
+
+.mppw-form-field__label {
+	background: #fff;
+	display: block;
+	width: revert;
+	position: revert;
+	left: revert;
+	top: revert;
+	overflow: hidden;
+	pointer-events: none;
+	transition: all .4s cubic-bezier(.25, .8, .25, 1);
+    color: var(--color-neutral);
+	margin-bottom: calc(var(--spacing)*1);
+	font-family: var(--font-europa);
+	font-size: var(--text-sm);
+	line-height: var(--tw-leading,var(--text-sm--line-height));
+	--tw-font-weight: var(--font-weight-bold);
+	font-weight: var(--font-weight-bold);
+	--tw-tracking: var(--tracking-tight);
+	letter-spacing: var(--tracking-tight);
+	display: block;
+}
+
+input[type='text'], input[type='email'], input[type='tel'], input[type='date'], select.mppw-form-field__control,
+input[type='text']:focus, input[type='email']:focus, input[type='tel']:focus, input[type='date']:focus, select.mppw-form-field__control:focus {
+    padding: calc(var(--spacing)*1) calc(var(--spacing)*2);
+	line-height: var(--tw-leading,var(--text-base--line-height));
+}
+
+select.mppw-form-field__control {
+    width: min(30rem,100%);
+}
+
+input[type='date'] {
+    width: min(14rem,100%)
+}
+
+
+
+.product-form__control {
+	border-radius: revert;
+	color: revert;
+	font-size: revert;
+	line-height: revert;
+	padding: revert;
+	width: 100%;
+}
+
+.mppw-form-field--is-valid .product-form__control {
+	padding: revert;
+}
+
+.mppw-form-field--is-valid .mppw-form-field__control {
+	background: revert;
+}
+
+#formFields > h3 {
+  display: none; /* Or any other styles, e.g., to hide or highlight them */
+}
+
+#formFields { margin-block: calc(var(--spacing)*4); }
+
+
+.mppw-btn.primary {
+	margin-left: revert;
+}
+
+
+.mppw-form-field__alt-label-required {
+	color: var(--color-red-500);
+}
