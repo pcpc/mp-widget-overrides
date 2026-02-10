@@ -1,0 +1,64 @@
+
+
+{% assign currentDateTime = "now" | date: '%Y-%m-%dT%H:%M:%S'  %}
+{% assign eventStartDateOnly = DataSet1[0].eventStartDate | date: '%Y-%m-%d', 0 %}
+{% assign eventEndDateOnly = DataSet1[0].eventEndDate | date: '%Y-%m-%d', 0 %}
+{% assign eventStartYear = DataSet1[0].eventStartDate | date: '%Y', 0 %}
+{% assign eventEndYear = DataSet1[0].eventEndDate | date: '%Y', 0 %}
+{% assign eventStartTimeOfDay = DataSet1[0].eventStartDate | date: '%p', 0 %}
+{% assign eventEndTimeOfDay = DataSet1[0].eventEndDate | date: '%p', 0 %}
+
+{% for item in DataSet1 %}
+    <div class="registration">
+        <h3 class="text-center">{{ item.title }}</h3>
+        {% if item.eventRange %}
+            <h5 class="text-center">
+                
+                {% if eventStartYear == eventEndYear %}
+                    {% if eventEndDateOnly > eventStartDateOnly %}
+                        {{ item.eventStartDate | date: '%B %e', 0 }}-{{ item.eventEndDate | date: '%B %e, %Y', 0 }}
+                    {% else %}
+                        {{ item.eventStartDate | date: '%B %e, %Y', 0 }}
+                        <br/>
+                        {{- item.eventStartDate | date: "%l:%M-", 0 -}}
+                        {%- if eventStartTimeOfDay != eventEndTimeOfDay -%}
+                            {{- item.eventStartDate | date: '%P-', 0 -}}
+                        {% endif -%}{{- item.eventEndDate | date: '%l:%M %P', 0 | strip -}} 
+                    {% endif %}
+                {% else %}
+                    {{ item.eventStartDate | date: '%B %e, %Y', 0 }}-{{ item.eventEndDate | date: '%B %e, %Y', 0 }}
+                {% endif %}
+            </h5>
+            <hr/>
+        {% endif %}
+        
+        {% if item.defaultImageSummary == 'featured-image' %}
+            <img src="{{ item.defaultimageurl }}?thumbnail" alt="Event image for {{ item.title }}" class="eventDetailWidgetFeaturedImage"/>
+            <hr />
+        {% endif %}
+
+        {% if item.description %}
+            <div class="eventTeaser">
+                <p>{{ item.description | escape | newline_to_br }}</p>
+            </div>
+            <hr />
+        {% endif %}
+
+        {% if item.registrationActive %}
+            {% if currentDateTime < item.registrationStart %}
+                <p class="text-center"><strong>Registration will open {{ item.registrationStart | date: '%A, %B %e, %Y at %l:%M %P', 0 }}</strong></p>
+                <hr />
+            {% else %}
+                {% if currentDateTime > item.registrationEnd %}
+                    <p class="text-center"><strong>Registration is no longer open.</strong></p>
+                    <hr />
+                {% else %}
+                    <p class="text-center"><strong>Registration is open until {{ item.registrationEnd | date: '%B %e, %Y at %I:%M %P', 0 }}</strong></p>
+                    <hr />
+                {% endif %}
+            {% endif %}
+            
+        {% endif %}
+    </div>
+    
+{% endfor %}
