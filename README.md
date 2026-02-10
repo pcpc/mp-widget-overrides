@@ -16,7 +16,7 @@ URL: https://pcpc.github.io/mp-widget-overrides
 ```html
 <mpp-event-details
    customcss="https://pcpc.github.io/mp-widget-overrides/event-details/ev-details.css"
-   checkouturl="https://pcpc.org/registrations/checkout/"
+   checkouturl="/registrations/checkout/"
    returnurl="../events"
 ></mpp-event-details>
 ```
