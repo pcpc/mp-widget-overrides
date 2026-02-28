@@ -226,11 +226,14 @@ class TripList extends HTMLElement {
       'sm:rounded-lg'
     ].join(' ');
 
-    // Close button (sticky so it stays visible when scrolling)
+    // Close button row (sticky so it stays visible when scrolling)
+    const closeBtnRow = document.createElement('div');
+    closeBtnRow.className = 'sticky top-0 z-10 flex justify-end pt-2 pr-2 sm:pt-3 sm:pr-3';
+
     const closeBtn = document.createElement('button');
     closeBtn.className = [
-      'sticky top-0 float-right z-10 mt-2 mr-2 sm:mt-3 sm:mr-3',
-      'text-neutral-400 transition-colors hover:text-neutral-600 focus:ring-2 focus:ring-accent-600 focus:ring-offset-2 focus:outline-none',
+      'text-neutral-400 transition-colors hover:text-neutral-600',
+      'focus:ring-2 focus:ring-accent-600 focus:ring-offset-2 focus:outline-none',
       'p-1 cursor-pointer'
     ].join(' ');
     closeBtn.setAttribute('aria-label', 'Close');
@@ -248,10 +251,11 @@ class TripList extends HTMLElement {
     svg.append(path);
     closeBtn.append(svg);
     closeBtn.addEventListener('click', () => this._closeModal());
+    closeBtnRow.append(closeBtn);
 
     // Content wrapper
     const content = document.createElement('div');
-    content.className = 'p-4 sm:p-8';
+    content.className = 'p-4 sm:p-8 -mt-6';
 
     // Trip name
     const title = document.createElement('h2');
@@ -321,7 +325,7 @@ class TripList extends HTMLElement {
     content.append(descWrap);
 
     // Assemble and mount
-    modal.append(closeBtn, content);
+    modal.append(closeBtnRow, content);
     overlay.append(backdrop, modal);
     this.append(overlay);
 
