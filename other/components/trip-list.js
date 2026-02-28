@@ -230,11 +230,23 @@ class TripList extends HTMLElement {
     const closeBtn = document.createElement('button');
     closeBtn.className = [
       'sticky top-0 float-right z-10 mt-2 mr-2 sm:mt-3 sm:mr-3',
-      'text-gray-400 hover:text-gray-600',
-      'text-2xl leading-none p-1 cursor-pointer'
+      'text-neutral-400 transition-colors hover:text-neutral-600 focus:ring-2 focus:ring-accent-600 focus:ring-offset-2 focus:outline-none',
+      'p-1 cursor-pointer'
     ].join(' ');
     closeBtn.setAttribute('aria-label', 'Close');
-    closeBtn.textContent = '\u00d7';
+    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.setAttribute('class', 'h-3 w-3');
+    svg.setAttribute('fill', 'none');
+    svg.setAttribute('stroke', 'currentColor');
+    svg.setAttribute('viewBox', '0 0 24 24');
+    svg.setAttribute('aria-hidden', 'true');
+    const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    path.setAttribute('stroke-linecap', 'round');
+    path.setAttribute('stroke-linejoin', 'round');
+    path.setAttribute('stroke-width', '2');
+    path.setAttribute('d', 'M6 18L18 6M6 6l12 12');
+    svg.append(path);
+    closeBtn.append(svg);
     closeBtn.addEventListener('click', () => this._closeModal());
 
     // Content wrapper
