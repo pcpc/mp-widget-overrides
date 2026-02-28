@@ -210,7 +210,7 @@ class TripList extends HTMLElement {
 
     // Overlay container
     const overlay = document.createElement('div');
-    overlay.className = 'fixed inset-0 z-50 flex items-center justify-center p-4';
+    overlay.className = 'fixed inset-0 z-50 flex items-center justify-center sm:p-6';
     overlay.dataset.tripModal = '';
 
     // Backdrop
@@ -221,14 +221,16 @@ class TripList extends HTMLElement {
     // Modal card
     const modal = document.createElement('div');
     modal.className = [
-      'relative w-full max-w-2xl max-h-[90vh]',
-      'overflow-y-auto rounded-lg bg-white shadow-xl'
+      'relative w-full max-w-2xl h-full sm:h-auto sm:max-h-[85vh]',
+      'overflow-y-auto bg-white shadow-xl',
+      'sm:rounded-lg'
     ].join(' ');
 
-    // Close button
+    // Close button (sticky so it stays visible when scrolling)
     const closeBtn = document.createElement('button');
     closeBtn.className = [
-      'absolute top-3 right-3 text-gray-400 hover:text-gray-600',
+      'sticky top-0 float-right z-10 mt-2 mr-2 sm:mt-3 sm:mr-3',
+      'text-gray-400 hover:text-gray-600',
       'text-2xl leading-none p-1 cursor-pointer'
     ].join(' ');
     closeBtn.setAttribute('aria-label', 'Close');
@@ -237,7 +239,7 @@ class TripList extends HTMLElement {
 
     // Content wrapper
     const content = document.createElement('div');
-    content.className = 'p-8 pt-10';
+    content.className = 'p-4 sm:p-8';
 
     // Trip name
     const title = document.createElement('h2');
