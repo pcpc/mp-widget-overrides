@@ -283,10 +283,10 @@ class TripList extends HTMLElement {
       if (showApply) {
         const applyLink = document.createElement('a');
         applyLink.className = [
-          'inline-flex items-center justify-center',
-          'rounded px-6 py-2 text-sm font-semibold',
-          'bg-neutral-600 text-white hover:bg-neutral-700',
-          'no-underline motion-safe:transition'
+          'no-underline select-none rounded-sm',
+          'max-w-full px-2 py-1 text-input-base gap-2',
+          'border-1 border-primary text-primary hover:bg-primary hover:text-white',
+          'focus:ring-primary inline-flex items-center justify-center font-bold focus:ring-2 focus:ring-offset-2 focus:outline-none motion-safe:transition'
         ].join(' ');
         applyLink.setAttribute('href', trip.registrationUrl);
         applyLink.setAttribute('target', '_blank');
@@ -299,10 +299,10 @@ class TripList extends HTMLElement {
       if (showGive) {
         const giveLink = document.createElement('a');
         giveLink.className = [
-          'inline-flex items-center justify-center',
-          'rounded px-6 py-2 text-sm font-semibold',
-          'border border-neutral-600 text-neutral-600 hover:bg-neutral-100',
-          'no-underline motion-safe:transition'
+          'no-underline select-none rounded-sm',
+          'max-w-full px-2 py-1 text-input-base gap-1',
+          'bg-primary text-white hover:bg-primary-700 focus:ring-primary inline-flex items-center justify-center font-bold',
+          'focus:ring-2 focus:ring-offset-2 focus:outline-none motion-safe:transition'
         ].join(' ');
         const fundParam = encodeURIComponent(trip.name);
         giveLink.setAttribute(
