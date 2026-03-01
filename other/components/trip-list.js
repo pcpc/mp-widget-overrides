@@ -278,7 +278,7 @@ class TripList extends HTMLElement {
 
     if (showApply || showGive) {
       const btnRow = document.createElement('div');
-      btnRow.className = 'flex gap-4 justify-center mt-6';
+      btnRow.className = 'span-md flex flex-wrap gap-3 not-prose justify-center';
 
       if (showApply) {
         const applyLink = document.createElement('a');
