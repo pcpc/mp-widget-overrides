@@ -9,67 +9,62 @@
 {% assign eventEndTimeOfDay = DataSet1[0].eventEndDate | date: '%p', 0 %}
 
 {% for item in DataSet1 %}
-<section class="bg-white fluid-grid py-8" aria-label="Event details for {{ item.title }}">
-    <div class="span-content flex flex-col gap-2">
-        <div class="text-left self-start max-w-none w-full">
-            <header>
-                {% if item.eventRange %}
-                    {% if eventStartYear == eventEndYear %}
-                        {% if eventEndDateOnly > eventStartDateOnly %}
-                            <p class="text-teal-600 text-xl-bold">{{ item.eventStartDate | date: '%B %e', 0 }}-{{ item.eventEndDate | date: '%B %e, %Y', 0 }}</p>
-                        {% else %}
-                            <p class="text-teal-600 text-xl-bold">{{ item.eventStartDate | date: '%B %e, %Y', 0 }}</p>
-                            <p class="text-teal-600 text-xl-bold">
-                                {{- item.eventStartDate | date: "%l:%M-", 0 -}}
-                                {%- if eventStartTimeOfDay != eventEndTimeOfDay -%}
-                                    {{- item.eventStartDate | date: '%P-', 0 -}}
-                                {% endif -%}{{- item.eventEndDate | date: '%l:%M %P', 0 | strip -}} 
-                            </p>
-                        {% endif %}
-                    {% else %}
-                        <p class="text-teal-600 text-xl-bold">{{ item.eventStartDate | date: '%B %e, %Y', 0 }}-{{ item.eventEndDate | date: '%B %e, %Y', 0 }}</p>
-                    {% endif %}
+<div class="text-left self-start max-w-none w-full">
+    <header>
+        {% if item.eventRange %}
+            {% if eventStartYear == eventEndYear %}
+                {% if eventEndDateOnly > eventStartDateOnly %}
+                    <p class="text-teal-600 text-xl-bold">{{ item.eventStartDate | date: '%B %e', 0 }}-{{ item.eventEndDate | date: '%B %e, %Y', 0 }}</p>
+                {% else %}
+                    <p class="text-teal-600 text-xl-bold">{{ item.eventStartDate | date: '%B %e, %Y', 0 }}</p>
+                    <p class="text-teal-600 text-xl-bold">
+                        {{- item.eventStartDate | date: "%l:%M-", 0 -}}
+                        {%- if eventStartTimeOfDay != eventEndTimeOfDay -%}
+                            {{- item.eventStartDate | date: '%P-', 0 -}}
+                        {% endif -%}{{- item.eventEndDate | date: '%l:%M %P', 0 | strip -}} 
+                    </p>
                 {% endif %}
-                <h2 class="text-6xl-regular text-neutral-900 mb-2">{{ item.title }}</h2>
-                {% if item.registrationActive %}
-                    {% if currentDateTime < item.registrationStart %}
-                        <p class="text-neutral-600 font-sans text-lg uppercase"><strong>Registration will open {{ item.registrationStart | date: '%A, %B %e, %Y at %l:%M %P', 0 }}</strong></p>
-                    {% else %}
-                        {% if currentDateTime > item.registrationEnd %}
-                            <p class="text-neutral-600 font-sans text-lg uppercase"><strong>Registration is no longer open.</strong></p>
-                        {% else %}
-                            <p class="text-neutral-600 font-sans text-lg uppercase"><strong>Registration is open until {{ item.registrationEnd | date: '%B %e, %Y at %I:%M %P', 0 }}</strong></p>
-                        {% endif %}
-                    {% endif %}
+            {% else %}
+                <p class="text-teal-600 text-xl-bold">{{ item.eventStartDate | date: '%B %e, %Y', 0 }}-{{ item.eventEndDate | date: '%B %e, %Y', 0 }}</p>
+            {% endif %}
+        {% endif %}
+        <h2 class="text-6xl-regular text-neutral-900 mb-2">{{ item.title }}</h2>
+        {% if item.registrationActive %}
+            {% if currentDateTime < item.registrationStart %}
+                <p class="text-neutral-600 font-sans text-lg uppercase"><strong>Registration will open {{ item.registrationStart | date: '%A, %B %e, %Y at %l:%M %P', 0 }}</strong></p>
+            {% else %}
+                {% if currentDateTime > item.registrationEnd %}
+                    <p class="text-neutral-600 font-sans text-lg uppercase"><strong>Registration is no longer open.</strong></p>
+                {% else %}
+                    <p class="text-neutral-600 font-sans text-lg uppercase"><strong>Registration is open until {{ item.registrationEnd | date: '%B %e, %Y at %I:%M %P', 0 }}</strong></p>
                 {% endif %}
-            </header>
-        </div>
+            {% endif %}
+        {% endif %}
+    </header>
+</div>
 
-        {% if item.description %}
-        <div class="text-left self-start max-w-none w-full">
-            <div class="grid md:grid-cols-12 gap-8 items-start">
-                <div class=" md:col-span-7">
-                    <div class="prose max-w-none prose-neutral mt-2">
-                        <p>{{ item.description | escape | newline_to_br }}</p>
-                    </div>
-                </div>
-                <div class=" md:col-span-5">
-                    {% if item.defaultImageSummary == 'featured-image' %}
-                        <img src="{{ item.defaultimageurl }}?thumbnail" alt="Event image for {{ item.title }}" class="eventDetailWidgetFeaturedImage"/>
-                    {% endif %}
-                </div>
+{% if item.description %}
+<div class="text-left self-start max-w-none w-full">
+    <div class="grid md:grid-cols-12 gap-8 items-start">
+        <div class=" md:col-span-7">
+            <div class="prose max-w-none prose-neutral mt-2">
+                <p>{{ item.description | escape | newline_to_br }}</p>
             </div>
         </div>
-        {% endif %}
-
-        {% if item.description %}
-            <div class="text-left self-start max-w-none w-full">
-                <div class="prose-neutral m-auto prose max-w-none">
-                    <p>{{ item.description | escape | newline_to_br }}</p>
-                </div>
-            </div>
-        {% endif %}
+        <div class=" md:col-span-5">
+            {% if item.defaultImageSummary == 'featured-image' %}
+                <img src="{{ item.defaultimageurl }}?thumbnail" alt="Event image for {{ item.title }}" class="eventDetailWidgetFeaturedImage"/>
+            {% endif %}
+        </div>
     </div>
-</section>
-    
+</div>
+{% endif %}
+
+{% if item.description %}
+    <div class="text-left self-start max-w-none w-full">
+        <div class="prose-neutral m-auto prose max-w-none">
+            <p>{{ item.description | escape | newline_to_br }}</p>
+        </div>
+    </div>
+{% endif %}
 {% endfor %}
