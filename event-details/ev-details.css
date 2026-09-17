@@ -9,15 +9,20 @@
 * { font-family: var(--font-europa); }
 h1, h2, h3, p { font-family: var(--font-freight); }
 
+p:empty,
+p:has(> br:only-child) {
+  display: none;
+}
+
 .mpp-innerpage p { line-height: 1.5; }
 
 #detailsContainer, #mapContainer, #singlePriceContainer {
     display:none !important;
 }
 
-.mppw-form-field__control { width: revert; border-radius: var(--radius-md); border-color: var(--color-neutral-200); }
+.mppw-form-field__control { width: 100%; border-radius: var(--radius-md); border-color: var(--color-neutral-200); }
 
-.mppw-form-field__alt-label { font-size: revert; }
+.mppw-form-field__alt-label { font-size: revert; margin-bottom: revert; }
 
 .mppw-form-field--is-valid .mppw-form-field__label,
 .mppw-form-field--is-invalid .mppw-form-field__label,
@@ -98,6 +103,10 @@ input[type='date'] {
 
 .mppw-form-field--is-valid .mppw-form-field__control {
 	background: revert;
+}
+
+.mppw-form-field--is-valid .mppw-form-field__control, .mppw-form-field--is-invalid .mppw-form-field__control, .mppw-form-field__static-container .mppw-form-field__control {
+	padding: 0.6em;
 }
 
 #formFields > h3 {
